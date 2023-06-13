@@ -8,6 +8,6 @@ function GenresList({ list }) {
 
 export default GenresList;
 
-GenresList.PropTypes = {
+GenresList.propTypes = {
     list: PropTypes.array,
 };
