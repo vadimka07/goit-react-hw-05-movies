@@ -1,6 +1,7 @@
 import { getPopularMovies } from '../../services/api';
 import { useEffect, useState } from 'react';
 import MoviesList from '../../components/MoviesList/MoviesList';
+import PropTypes from 'prop-types';
 
 function Home() {
     const [movies, setMovies] = useState([]);
@@ -19,3 +20,7 @@ function Home() {
 }
 
 export default Home;
+
+Home.propTypes = {
+    movies: PropTypes.array,
+};

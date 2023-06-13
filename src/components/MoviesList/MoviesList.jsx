@@ -1,4 +1,5 @@
 import MovieItem from '../MovieItem/MovieItem';
+import PropTypes from 'prop-types';
 
 function MoviesList({ movies }) {
     return (
@@ -17,3 +18,8 @@ function MoviesList({ movies }) {
 }
 
 export default MoviesList;
+
+MoviesList.propTypes = {
+    movies: PropTypes.array,
+    movie: PropTypes.object,
+};

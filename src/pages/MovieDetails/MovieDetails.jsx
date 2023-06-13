@@ -1,10 +1,11 @@
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import GenresList from '../../components/GenresList/GenresList';
 import GoBack from '../../components/GoBack/GoBack';
 import { DIV, Thumb } from './MoviesDetails.styled';
 import noPhoto from '../../assets/images/no-image-500.png';
+import PropTypes from 'prop-types';
 
 function MovieDetails() {
     const { movieId } = useParams();
@@ -57,9 +58,16 @@ function MovieDetails() {
                     <Link to="reviews">Reviews</Link>
                 </li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<div>Loading ...</div>}>
+                <Outlet />
+            </Suspense>
         </>
     );
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+    path: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    list: PropTypes.array,
+};
